@@ -1,21 +1,17 @@
-def print_operation_table(operation, num_rows=6, num_columns=6):
-    # Печатаем заголовок таблицы
-    print("  ", end="")
-    for j in range(1, num_columns+1):
-        print(j, end=" ")
-    print()
+# Задача 36: На вход программы поступает строка в формате:ключ_1=значение_1 ключ_2=значение_2 ... ключ_N=значение_N
+# Необходимо с помощью функции map преобразовать ее в кортеж tp вида:
+# tp = (('ключ_1', 'значение_1'), ('ключ_2', 'значение_2'), ..., ('ключ_N', 'значение_N'))
+# Выводить на экран ничего не нужно, только преобразовать строку в кортеж с именем tp.
+# Sample Input: house=дом car=машина men=человек tree=дерево
+# Sample Output: (('house', 'дом'), ('car','машина'), ('men', 'человек'), ('tree', 'дерево'))
 
-    # Печатаем строки таблицы
-    for i in range(1, num_rows+1):
-        print(i, end=" ")
-        for j in range(1, num_columns+1):
-            result = operation(i, j)
-            print(result, end=" ")
-        print()
+# Вариант № 1:
+#s = "house=дом car=машина men=человек tree=дерево"
+#tp = tuple(map(lambda x: tuple(x.split('=')), s.split()))
+#print(tp)
 
-# Запрашиваем у пользователя значения num_rows и num_columns
-num_rows = int(input("Введите число строк: "))
-num_columns = int(input("Введите число столбцов: "))
-
-# Вызываем функцию print_operation_table с заданными аргументами
-print_operation_table(lambda x, y: x * y, num_rows, num_columns)
+def str_to_tuple(s):
+    return tuple(map(lambda x: tuple(x.split('=')), s.split()))
+s = "house=дом car=машина men=человек tree=дерево"
+tp = str_to_tuple(s)
+print(tp)
